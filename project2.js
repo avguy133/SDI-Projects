@@ -17,3 +17,17 @@ if ((p && q) || r) {
 } else {
     console.log("The expression is false");
 }
+
+// for (p and not q) or (q and r), example..
+if ((p && !q) || (q && r)) {
+    console.log("The expression is true");
+} else {
+    console.log("The expression is false");
+}
+
+// for not(p or r), example..
+if (!(p || r)) {
+    console.log("The expression is true");
+} else {
+    console.log("The expression is false");
+}
