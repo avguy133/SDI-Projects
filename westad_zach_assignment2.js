@@ -13,32 +13,61 @@ customerName = customerNames[1];
 
 var totalBill = []; // puts the total bill in one array 
 
-
+for (var i=0; i < totalBill.length; i++) {
+	sum+=totalBill[i];
+	}
+	
 var projectTools = ["Drill", "Wire Cutter", "Multimeter"];  // different tools i need
 var findCarHead = false;  // true = I need to find a new head unit, false = I do not need a new head unit
 var carSpeaker = 3;  // number of car speakers needed
 var carSub = true;  // true = sub is needed, false = no sub needed
 var carSubType = false;  // true = wooden box, false = fiberglass box
 
+
+
+var headNames = ["Sony", "Kenwood", "Pioneer", "Pyle"];
+var headCosts = [100, 120, 90, 60];
+
+say("First I need to have " + customerName + " pick out a Head Unit. Here are his choices...");
+
+for (var i = 0; i < headNames.length; i++) {
+	say( "The " + headNames[i] + " is $" + headCosts[i]);
+};
+headName = headNames[1];
+headCost = headCosts[1];
+totalBill.push(headCosts[1]);
+
+say(customerName + " picked out the " + headName + " Head Unit, so $" + headCost + " will be added to his total.");
+
+
 say("I now need to have " + customerName + " pick out a subwoofer from this list.");
 
-var productNames = ['8" sub', '10" sub', '12" sub', '15" sub'];
-var productCosts = [60, 80, 110, 140];
+var subNames = ['8" sub', '10" sub', '12" sub', '15" sub'];
+var subCosts = [60, 80, 110, 140];
 
-for (var i = 0; i < productNames.length; i++) {
-	say( "The " + productNames[i] + " is $" + productCosts[i]);
+for (var i = 0; i < subNames.length; i++) {
+	say( "The " + subNames[i] + " is $" + subCosts[i]);
 };
 
-productName = productNames[2];
-productCost = productCosts[2];
-totalBill.push(productCosts[2]);
+subName = subNames[2];
+subCost = subCosts[2];
+totalBill.push(subCosts[2]);
 
-say("Since " + customerName + " picked out the " + productName + " from the list, $" + productCost + " will be added to his total.");
+say("Since " + customerName + " picked out the " + subName + " from the list, $" + subCost + " will be added to his total.");
 
-say("His total is now " + );
+
+
+
+
+
+
+say("My next step is to put everything together.");
+
+
+
 
 var screwsTotal = 8;
-say("Now I need to put in the screws.");
+say("I need to put the subwoofer in the box with 8 screws.");
 while ( screwsTotal > 0 ) {
 	say(screwsTotal + " screws left to screw in.")
 	screwsTotal-=2;
