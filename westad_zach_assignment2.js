@@ -4,19 +4,24 @@
 // Deliverable 2
 // Custom Car Audio
 
-// function to shorten 'console.log()' statements wit say().
+// function to shorten 'console.log()' statements wit 'say()'.
 var say = function(message) { console.log(message); };
 
+// This if the function to list the Head Units and their cost.
+var pickOneHead = function() {
+	var headName = headNames[headNumber];
+	var costThisDeck = headCosts[headNumber];
+	say( "The " + headNames[headNumber] + " is $" + headCosts[headNumber]);
+};
+// This if the function to list the Subs and their cost.
+var pickOneSub = function() {
+	var subName = subNames[subNumber];
+	var costThisSub = subCosts[subNumber];
+	say( "The " + subNames[subNumber] + " is $" + subCosts[subNumber]);
+};
 var customerNames = ["Ryan", "Bill", "Jack"];  // person's name of the car i will be working on
-
-customerName = customerNames[1];
-
+	customerName = customerNames[1];
 var totalBill = []; // puts the total bill in one array 
-
-for (var i=0; i < totalBill.length; i++) {
-	sum+=totalBill[i];
-	}
-	
 var projectTools = ["Drill", "Wire Cutter", "Multimeter"];  // different tools i need
 var findCarHead = false;  // true = I need to find a new head unit, false = I do not need a new head unit
 var carSpeaker = 3;  // number of car speakers needed
@@ -30,8 +35,8 @@ var headCosts = [100, 120, 90, 60];
 
 say("First I need to have " + customerName + " pick out a Head Unit. Here are his choices...");
 
-for (var i = 0; i < headNames.length; i++) {
-	say( "The " + headNames[i] + " is $" + headCosts[i]);
+for (var headNumber = 0; headNumber < headNames.length; headNumber++) { 
+	pickOneHead();
 };
 headName = headNames[1];
 headCost = headCosts[1];
@@ -42,11 +47,11 @@ say(customerName + " picked out the " + headName + " Head Unit, so $" + headCost
 
 say("I now need to have " + customerName + " pick out a subwoofer from this list.");
 
-var subNames = ['8" sub', '10" sub', '12" sub', '15" sub'];
-var subCosts = [60, 80, 110, 140];
+var subNames = ['8" Sub', '10" Sub', '12" Sub', '15" Sub'];
+var subCosts = [60, 90, 110, 140];
 
-for (var i = 0; i < subNames.length; i++) {
-	say( "The " + subNames[i] + " is $" + subCosts[i]);
+for (var subNumber = 0; subNumber < subNames.length; subNumber++) { 
+	pickOneSub();
 };
 
 subName = subNames[2];
@@ -76,6 +81,15 @@ say("Now all the screws are screwed in!");
 
 
 
+// scrtipt to show the number of items in an array
+say("There are " + totalBill.length + " item(s) that are needed.");
+
+// script to add all the units in the array tatalBill
+var sum = 0;
+for (var i = 0; i < totalBill.length ; i++) {
+         sum = sum + totalBill[i];
+};
+say("the total bill was " + sum);
 
 
 
@@ -83,7 +97,7 @@ say("Now all the screws are screwed in!");
 
 
 
-
+/*
 if (projectTools === true)  {
 	var toolsAnswer = ("and I have all the tools I need to get started!");
 } else {
@@ -114,6 +128,8 @@ if (carSub === true)  {
 }
 
 console.log ("I am working on a project for ", customerName[0], ", ", toolsAnswer, headAnswer, speakerAnswer, subAnswer, boxAnswer);
+*/
+
 
 // Activity: Boolean Logic
 //var p = true, q = false, r = false;
@@ -123,7 +139,7 @@ console.log ("I am working on a project for ", customerName[0], ", ", toolsAnswe
 //  } else {
 //     console.log("The expression is false");
 // }
-
+/*
 var p = true, q = false, r = false;
 
 console.log("Given p = true, q = false, r = false,");
@@ -147,3 +163,4 @@ if (!(p || r)) {
 } else {
     console.log("The expression 'not(p or r)' is false");
 }
+*/
