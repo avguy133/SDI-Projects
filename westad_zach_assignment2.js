@@ -1,6 +1,6 @@
 // Author: Zach Westad
 // Created On: 03-1-2012
-// Last Edit: 03-7-2012
+// Last Edit: 03-8-2012
 // Deliverable 2
 // Custom Car Audio
 
@@ -29,7 +29,7 @@ var buyAllParts = function(givenMoney) {
 		wholeDollars;
 	if (givenMoney < projectCost) {
 		wholeDollars = sum - givenMoney;
-		{ return say("Hey! You still need to give me $" + wholeDollars); }
+		{ return say("Hey! You still need to give me $" + wholeDollars + "!!!"); }
 	}
 
 	else {
@@ -40,15 +40,20 @@ var buyAllParts = function(givenMoney) {
 };
 
 var customerNames = ["Ryan", "Bill", "Jack"];  // person's name of the car i will be working on
-	customerName = customerNames[1];
+var customerName = customerNames[1]; // select the customer from the array above and put the choive in the array here.
 var totalBill = []; // puts the total bill in one array 
 var projectTools = true;  // true = I have all the tools,  false = i am missing some of my tools
-var findCarHead = true;  // true = I need to find a new head unit, false = I do not need a new head unit
 var carSpeaker = 3;  // number of car speakers needed
-var carSub = true;  // true = sub is needed, false = no sub needed
 var carSubType = false;  // true = wooden box, false = fiberglass box
+var totalMoneyGiven = 300;
 
 
+// Intro to the story / project
+say("I received a phone call from " + customerName + " today wanting me to work on his car's stereo system.");
+say("So I have him come over and pick out the parts he wants installed.");
+
+
+// this is the section for the head unit
 var headNames = ["Sony", "Kenwood", "Pioneer", "Pyle"];
 var headCosts = [100, 120, 90, 60];
 
@@ -65,19 +70,19 @@ totalBill.push(headCosts[1]);
 say(customerName + " picked out the " + headName + " Head Unit, so $" + headCost + " will be added to his total.");
 
 
-
-if (carSub === true)  {
-	var subAnswer = ("I will need to get a subwoofer ");
-	if (carSubType === true)  {
-	var boxAnswer = ("and make a wooden box for the Sub.");
-	} else {
-	var boxAnswer = ("and make a fiberglass box for the Sub.");
-	}
+// this determines the number of speakers needed for the install
+if (carSpeaker > 0)  {
+	var speakerAnswer = ("I need to purchase " + carSpeaker + " speakers for this car. So $" );
+	var speakerCost = ( carSpeaker * 45);
 } else {
-	var subAnswer = ("No subwoofer will be needed. :(");
+	var speakerAnswer = ("and all the speakers are good, so $");
+	var speakerCost = 0;
 }
+say(speakerAnswer + speakerCost + " will be added to the total.")
+totalBill.push(speakerCost);
 
 
+// this is the subwoofer section
 say("I now need to have " + customerName + " pick out a subwoofer from this list.");
 
 var subNames = ['8" Sub', '10" Sub', '12" Sub', '15" Sub'];
@@ -91,22 +96,31 @@ subName = subNames[2];
 subCost = subCosts[2];
 totalBill.push(subCosts[2]);
 
+if (carSubType === true)  {
+	var boxAnswer = ("wooden");
+	var boxCost = 30;
+	} else {
+	var boxAnswer = ("fiberglass");
+	var boxCost = 80;
+};
+totalBill.push(boxCost);
+
 say("Since " + customerName + " picked out the " + subName + " from the list, $" + subCost + " will be added to his total.");
+say(customerName + " also had the option of a wooden box or a fiberglass box, and he chose " + boxAnswer + " box, so $" + boxCost + " will be added to his total.");
 
 
 
+// Now I am done with the first section and am moving on to the second half.
 
-
-
-
-say("My next step is to put everything together.");
+say("Now that I have had " + customerName + " pick his stuff out, I can start to get my hands dirty!");
 
 if (projectTools === true)  {
-	var toolsAnswer = ("and I have all the tools I need to get started!");
+	var toolsAnswer = ("I have all the tools I need to get started, so lets start out with the sub.");
 } else {
-	var toolsAnswer = ("but I need to find my tools first.");
+	var toolsAnswer = ("I need to find my tools before I work on his car. Oops! :)");
 }
-
+// says if i have all my tools or not
+say(toolsAnswer);
 
 var screwsTotal = 8;
 say("I need to put the subwoofer in the box with 8 screws.");
@@ -116,88 +130,22 @@ while ( screwsTotal > 0 ) {
 };
 say("Now all the screws are screwed in!");
 
+// final install messages
+say("Well, I finished putting all the components in your car " + customerName + ", so you should be ready to go!");
+say("Here is your bill, " + customerName + ".");
+
 
 
 // scrtipt to show the number of items in an array
-say("There are " + totalBill.length + " item(s) that are needed.");
+say("There were " + totalBill.length + " item(s) that are needed.");
 
 // script to add all the units in the array tatalBill
 var sum = 0;
 for (var i = 0; i < totalBill.length ; i++) {
          sum = sum + totalBill[i];
 };
-say("The total bill was " + sum);
+say("The total bill was $" + sum + ".");
 
-buyAllParts(300);
-
-
-
-
-
-
-if (projectTools === true)  {
-	var toolsAnswer = ("and I have all the tools I need to get started!");
-} else {
-	var toolsAnswer = ("but I need to find my tools first.");
-}
-
-if (findCarHead === true)  {
-	var headAnswer = ("I'm going to have to find a new Head Unit ");
-} else {
-	var headAnswer = ("The Head Unit will work ");
-}
-
-if (carSpeaker > 0)  {
-	var speakerAnswer = ("and I need to purchase ", carSpeaker, " speakers for this car." );
-} else {
-	var speakerAnswer = ("and all the speakers are good!");
-}
-
-if (carSub === true)  {
-	var subAnswer = ("I will need to get a subwoofer ");
-	if (carSubType === true)  {
-	var boxAnswer = ("and make a wooden box for the Sub.");
-	} else {
-	var boxAnswer = ("and make a fiberglass box for the Sub.");
-	}
-} else {
-	var subAnswer = ("No subwoofer will be needed. :(");
-}
-
-console.log ("I am working on a project for ", customerName[0], ", ", toolsAnswer, headAnswer, speakerAnswer, subAnswer, boxAnswer);
-
-
-
-// Activity: Boolean Logic
-//var p = true, q = false, r = false;
-// Given: (p and q) or r
-// if ((p && q) || r) {
-//     console.log("The expression is true");
-//  } else {
-//     console.log("The expression is false");
-// }
-/*
-var p = true, q = false, r = false;
-
-console.log("Given p = true, q = false, r = false,");
-// for p and (q or r), example..
-if ((p && q) || r) {
-    console.log("The expression 'p and (q or r)' is true");
-} else {
-    console.log("The expression 'p and (q or r)' is false");
-}
-
-// for (p and not q) or (q and r), example..
-if ((p && !q) || (q && r)) {
-    console.log("The expression '(p and not q) or (q and r)' is true");
-} else {
-    console.log("The expression '(p and not q) or (q and r)' is false");
-}
-
-// for not(p or r), example..
-if (!(p || r)) {
-    console.log("The expression 'not(p or r)' is true");
-} else {
-    console.log("The expression 'not(p or r)' is false");
-}
-*/
+say("He gave me $" + totalMoneyGiven + ".");
+// this uses a function to display what he owes / receives as change.
+buyAllParts(totalMoneyGiven);
