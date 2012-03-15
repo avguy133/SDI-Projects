@@ -5,7 +5,6 @@
 // Custom Car Audio
 
 // These variables are arrays that keep the total bill and hours together
-var timeUsed = [];
 var cart = [];
 
 // this references the json_assignment3.js file and you change the number in the array
@@ -17,8 +16,10 @@ var speaker = jsonSpeaker.Products[1]
 
 var subwoofer = jsonSub.Products[1]
 
-// number of speakers needed
+// number of each component needed
+var headNumber = 1;
 var speakerNumber = 4;
+var subNumber = 1;
 
 // object for the say function
 var projects = {
@@ -26,26 +27,12 @@ var projects = {
 }
 
 
-// this area adds the hours of everything to the projects.timeUsed array
-timeUsed.push(stereo.timeConsumed);
-timeUsed.push(speaker.timeConsumed * speakerNumber);
-timeUsed.push(subwoofer.timeConsumed);
-
 // this area adds the cost of everything to the cart array
-cart.push(stereo.price);
+cart.push(stereo.price * headNumber);
 cart.push(speaker.price * speakerNumber);
-cart.push(subwoofer.price);
+cart.push(subwoofer.price * subNumber);
 
 
-// calculates the labor costs
-var totalLaborCost = timeUsed * 15
-cart.push(totalLaborCost);
-
-// adds the total hours of labor
-var laborSum = 0;
-for (var i = 0; i < timeUsed.length ; i++) {
-         laborSum = laborSum + timeUsed[i];
-};
 
 // script to add all the units in the array tatalBill
 var sum = 0;
@@ -66,9 +53,7 @@ projects.say(customer.name + " wanted the " + stereo.name + " stereo, so I insta
 projects.say("I then asked what " + customer.name + " wanted for the speakers. " + " The response was " + speaker.name + " speakers.");
 projects.say(customer.name + " also wanted a subwoofer. So I showed " + customer.name + " the different subs available and the " + subwoofer.name + " was chosen.");
 projects.say("Since I now know what i need to install, I can get the wiring diagram for the " + customer.vehicleYear + " " + customer.vehicleMake + " " + customer.vehicleModel + "."  );
-projects.say("The components are now installed and I have spent " + laborSum + " hours working on this vehicle.");
 projects.say("After all the components and the labor, the bill comes to $" + sum + ".");
 projects.say("I give " + customer.name + " the bill and they pay me for the job!");
 
-
-projects.say(cart);
+projects.say(cart)
