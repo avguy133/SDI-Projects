@@ -158,3 +158,27 @@ var numberResult = roundMoney(numberToRound,decimalPlaces)
 console.log("the first numbers are " + firstNumbers + " and the last numbers for the decimal places are " + lastNumbers);
 
 console.log("$" + firstNumbers + "." + lastNumbers)
+
+
+
+
+// is a string a url???
+
+var stringToCheck = "http://www.google.com/";
+var stringResult,
+    colonFinder;
+
+var urlChecker = function() {
+    var colonFinder = stringToCheck.indexOf(":");
+    var stringResult = "invalid";
+    if (stringToCheck.substring(0,colonFinder) === "http"){
+        stringResult = "valid";
+    };
+    if (stringToCheck.substring(0,colonFinder) === "https"){
+            stringResult = "valid";
+    };
+    return stringResult;
+};
+
+var results = urlChecker(stringToCheck);
+console.log(results);
