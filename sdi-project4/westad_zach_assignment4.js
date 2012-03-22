@@ -127,3 +127,34 @@ stringNumberConverter();
 console.log(stringNumber);
 console.log(convertedNumber);
 
+
+
+// this string places the correct number of decimal places behind a number even if its '0''s
+// all you need to change is the numberToRound and the decimalPlaces variables
+var numberToRound = 21.00348570923745,
+    decimalPlaces = 2,
+    numberResult,
+    correctPosition,
+    firstNumbers,
+    lastNumbers;
+    
+var roundMoney = function(numberToRound, decimalPlaces) {
+	var numberResult = Math.round(numberToRound*Math.pow(10,decimalPlaces))/Math.pow(10,decimalPlaces);
+
+        correctPosition = numberResult * Math.pow(10,decimalPlaces)
+                
+        correctPosition = correctPosition.toString();
+
+        firstNumbers = correctPosition.substring(0,(correctPosition.length - decimalPlaces));
+             
+        
+        lastNumbers = correctPosition.substring((firstNumbers.length),correctPosition.length);
+        
+        return firstNumbers, lastNumbers, correctPosition;
+};  
+
+var numberResult = roundMoney(numberToRound,decimalPlaces)
+
+console.log("the first numbers are " + firstNumbers + " and the last numbers for the decimal places are " + lastNumbers);
+
+console.log("$" + firstNumbers + "." + lastNumbers)
