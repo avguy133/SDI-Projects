@@ -109,3 +109,21 @@ var checkEmail = function() {
 checkEmail();
 // console log to display the outcome
 console.log("The email adress '" + emailAdressDisplay + "' is " + result);
+
+
+
+// Given a string version of a number such as "42", return the value as an actual Number, such as 42.
+
+var stringNumber = "42";
+var convertedNumber;
+
+var stringNumberConverter = function() {
+    convertedNumber = stringNumber * 1;
+    return convertedNumber;
+};
+
+stringNumberConverter();
+// outputs the before and after numbers
+console.log(stringNumber);
+console.log(convertedNumber);
+
