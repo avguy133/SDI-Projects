@@ -182,3 +182,27 @@ var urlChecker = function() {
 
 var results = urlChecker(stringToCheck);
 console.log(results);
+
+
+
+// Find the total value of just the numbers in an array, even if some of the items are not numbers.
+
+
+var arrayToAdd = [1, 2, "4.7 inches", 73, "vern"];
+var addArray = function(incomingArray) {
+    var arraySum = 0,
+        i = 0,
+        element = 0;
+        
+    for (i = 0; i < incomingArray.length ; i++) {
+        element = parseFloat(incomingArray[i]);
+        if (isNaN(element)) {
+            element = 0;
+        };       
+        arraySum = arraySum + element;    
+    };
+    return arraySum;    
+};
+
+var total = addArray(arrayToAdd);
+console.log("The total of the array is " + total);
